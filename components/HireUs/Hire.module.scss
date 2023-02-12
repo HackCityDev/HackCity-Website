@@ -1,0 +1,130 @@
+@import "../General/General.module.scss";
+
+.Index {
+  background-color: #fff;
+  color: #000;
+  .IndexHeaders {
+    @include BOX();
+    position: relative;
+    padding: 50px 5%;
+    align-items: center;
+    background: #f2f6fd;
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      cursor: pointer;
+    }
+  }
+  .IndexImage {
+    position: relative;
+    width: 100%;
+    height: 1000px;
+    svg {
+      position: absolute;
+      top: 15%;
+      z-index: 10;
+      left: 10%;
+      cursor: pointer;
+    }
+  }
+  .IndexContainer {
+    padding: 20px 5%;
+    max-width: 600px;
+    margin: auto;
+    .IndexProgress {
+      margin: 20px 0;
+      progress[value] {
+        height: 13px;
+        width: 100%;
+        background-color: #d9e7ff;
+        border-radius: 100px;
+        overflow: hidden;
+        position: relative;
+      }
+      progress[value]::-webkit-progress-value {
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        background-color: #041836;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+      }
+    }
+    .IndexQuestionaire {
+      width: 100%;
+      margin: 25px 0;
+      .IndexQuestionaireHeader,
+      .IndexQuestionaireFooter {
+        @include Flex();
+        gap: 14px;
+        align-items: baseline;
+        justify-content: flex-start;
+        margin: 12px 0;
+      }
+      .IndexQuestionaireBox {
+        @include Flex();
+        flex-direction: column;
+        gap: 10px;
+        .IndexQuestionaireContent {
+          @include Flex();
+          padding: 5px;
+          justify-content: initial;
+          cursor: pointer;
+          gap: 18px;
+          border: 0.7px solid #c0c0c0;
+          border-radius: 5px;
+          svg {
+            background: #a6c5f1;
+            border: 1px solid #2679ed;
+            border-radius: 100px;
+          }
+        }
+        label {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          gap: 10px;
+        }
+        .IndexQuestionaireInput {
+          all: unset;
+          padding: 14px;
+          box-sizing: border-box;
+          border: 1px solid black;
+        }
+      }
+      .IndexQuestionaireTextarea {
+        textarea {
+          all: unset;
+          width: min(490px, 100%);
+          height: 150px;
+          padding: 20px;
+          border: 1px solid #000;
+          color: #000;
+          box-sizing: border-box;
+        }
+      }
+    }
+    .HireButton {
+      @include Flex();
+      justify-content: space-between;
+    }
+  }
+  @media (min-width: 900px) {
+    section {
+      display: flex;
+      .IndexHeaders {
+        flex: 3;
+      }
+      .IndexImage {
+        flex: 2;
+      }
+      .IndexContainer {
+        padding: 20px 1%;
+      }
+    }
+  }
+}

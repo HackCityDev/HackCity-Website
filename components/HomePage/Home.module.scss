@@ -1,0 +1,210 @@
+@import "../General/General.module.scss";
+
+.Hero {
+  position: relative;
+  background-color: #fff;
+  padding: 100px 5%;
+  @include Flex();
+  section {
+    flex: 1;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .HeroContent {
+    @include BOX();
+    align-self: baseline;
+    h1,
+    p {
+      max-width: 600px;
+    }
+    .HeroButton {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}
+.Dev {
+  position: relative;
+  background-color: #fff;
+  padding: 0 5%;
+  @include Flex();
+  gap: 10px;
+  .DevImage {
+    flex: 2;
+    align-self: flex-start;
+    position: relative;
+    width: 100%;
+    &:has(span) {
+      padding-top: min(100%, 342px);
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .DevContent {
+    align-self: baseline;
+    flex: 3;
+    @include BOX();
+  }
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+.FlexBoxes {
+  padding: 30px 5%;
+  background-color: #fff;
+  .FlexBoxesContent {
+    @include Flex();
+    gap: 15px;
+    aside {
+      box-shadow: 14px 22px 52px -12px rgba(127, 127, 127, 0.13);
+      border-radius: 10px;
+      padding: 25px 20px;
+      color: #000;
+      max-width: 500px;
+      div {
+        @include Flex();
+        h3 {
+          text-align: center;
+          width: 100%;
+          white-space: nowrap;
+        }
+      }
+    }
+    @media (max-width: 800px) {
+      flex-direction: column;
+      aside {
+      }
+      h3 {
+        white-space: normal;
+      }
+    }
+  }
+}
+.Startups {
+  padding: 30px 5%;
+  background: #ecf0ff;
+  .StartupsAssets {
+    @include Flex();
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+.Services {
+  padding: 30px 5%;
+  background: #fff;
+  aside {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 23px;
+    text-align: center;
+    justify-content: space-between;
+    background: #ffffff;
+    box-shadow: 14px 22px 52px -12px rgba(127, 127, 127, 0.13);
+    border-radius: 14px;
+    h1 {
+      white-space: nowrap;
+    }
+    p {
+      text-align: left;
+    }
+  }
+  @media (min-width: 600px) {
+    div {
+      flex: calc(33.33% - 20px);
+    }
+  }
+  @media (min-width: 900px) {
+    div {
+      flex: calc(25% - 20px);
+    }
+  }
+}
+.Hire {
+  padding: 30px 5%;
+  background-color: #fff;
+  @include Flex();
+  gap: 1rem;
+  flex-direction: column;
+  .HireContent {
+    @include BOX();
+  }
+  section {
+    flex: 1;
+  }
+  .HireImage {
+    position: relative;
+    width: 100%;
+    padding-top: min(294px, 100%);
+  }
+  @media (min-width: 800px) {
+    flex-direction: row;
+    .HireContent {
+      order: 1;
+    }
+    .HireImage {
+      order: 2;
+    }
+  }
+}
+.Newsletter {
+  padding: 30px 5%;
+  background-color: #f4f8fd;
+  section {
+    @media (min-width: 700px) {
+      @include Flex();
+      h1 {
+        flex: 2;
+      }
+      div {
+        flex: 3;
+      }
+    }
+  }
+  div {
+    position: relative;
+    overflow: hidden;
+    input {
+      all: unset;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 0 14px;
+      border: 0.8px solid #c0c0c0;
+      height: 44px;
+      width: 100%;
+      color: #000;
+    }
+    button {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}
+.JoinTeam {
+  padding: 50px 5%;
+  background-color: #fff;
+  section {
+    @include BOX();
+    align-self: baseline;
+    h1,
+    p {
+      max-width: 600px;
+    }
+    .HeroButton {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}

@@ -1,0 +1,328 @@
+.HighlightText {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #eb5757;
+}
+
+.Headers {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  background: linear-gradient(192.7deg, #152a47 14.55%, #032555 91.2%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.Paragraphs {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 28px;
+  letter-spacing: 0.03em;
+  color: #3a3a3a;
+}
+
+.Button {
+  all: unset;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 14px;
+  padding: 15px 20px;
+  text-align: center;
+  transition: all 300ms ease-out;
+  color: #ffffff;
+  background-color: #152a47;
+}
+.Button:hover {
+  color: rgb(21, 42, 71);
+  background-color: #ffffff;
+  border: 1px solid rgb(21, 42, 71);
+}
+
+.OpposeButton {
+  color: rgb(21, 42, 71);
+  background-color: #ffffff;
+  border: 1px solid rgb(21, 42, 71);
+}
+.OpposeButton:hover {
+  color: #ffffff;
+  background-color: #152a47;
+  box-shadow: 0px 7px 22px -6px rgba(33, 123, 244, 0.34);
+}
+
+.Hero {
+  position: relative;
+  background-color: #fff;
+  padding: 100px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.Hero section {
+  flex: 1;
+}
+.Hero section svg {
+  width: 100%;
+  height: 100%;
+}
+.Hero .HeroContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  align-self: baseline;
+}
+.Hero .HeroContent h1,
+.Hero .HeroContent p {
+  max-width: 600px;
+}
+.Hero .HeroContent .HeroButton {
+  display: flex;
+  gap: 1rem;
+}
+
+.Dev {
+  position: relative;
+  background-color: #fff;
+  padding: 0 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+.Dev .DevImage {
+  flex: 2;
+  align-self: flex-start;
+  position: relative;
+  width: 100%;
+}
+.Dev .DevImage:has(span) {
+  padding-top: min(100%, 342px);
+}
+.Dev .DevImage svg {
+  width: 100%;
+  height: 100%;
+}
+.Dev .DevContent {
+  align-self: baseline;
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+@media (max-width: 600px) {
+  .Dev {
+    flex-direction: column;
+  }
+}
+
+.FlexBoxes {
+  padding: 30px 5%;
+  background-color: #fff;
+}
+.FlexBoxes .FlexBoxesContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+.FlexBoxes .FlexBoxesContent aside {
+  box-shadow: 14px 22px 52px -12px rgba(127, 127, 127, 0.13);
+  border-radius: 10px;
+  padding: 25px 20px;
+  color: #000;
+  max-width: 500px;
+}
+.FlexBoxes .FlexBoxesContent aside div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.FlexBoxes .FlexBoxesContent aside div h3 {
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+}
+@media (max-width: 800px) {
+  .FlexBoxes .FlexBoxesContent {
+    flex-direction: column;
+  }
+  .FlexBoxes .FlexBoxesContent h3 {
+    white-space: normal;
+  }
+}
+
+.Startups {
+  padding: 30px 5%;
+  background: #ecf0ff;
+}
+.Startups .StartupsAssets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.Services {
+  padding: 30px 5%;
+  background: #fff;
+}
+.Services aside {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.Services div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 23px;
+  text-align: center;
+  justify-content: space-between;
+  background: #ffffff;
+  box-shadow: 14px 22px 52px -12px rgba(127, 127, 127, 0.13);
+  border-radius: 14px;
+}
+.Services div h1 {
+  white-space: nowrap;
+}
+.Services div p {
+  text-align: left;
+}
+@media (min-width: 600px) {
+  .Services div {
+    flex: calc(33.33% - 20px);
+  }
+}
+@media (min-width: 900px) {
+  .Services div {
+    flex: calc(25% - 20px);
+  }
+}
+
+.Hire {
+  padding: 30px 5%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  flex-direction: column;
+}
+.Hire .HireContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.Hire section {
+  flex: 1;
+}
+.Hire .HireImage {
+  position: relative;
+  width: 100%;
+  padding-top: min(294px, 100%);
+}
+@media (min-width: 800px) {
+  .Hire {
+    flex-direction: row;
+  }
+  .Hire .HireContent {
+    order: 1;
+  }
+  .Hire .HireImage {
+    order: 2;
+  }
+}
+
+.Newsletter {
+  padding: 30px 5%;
+  background-color: #f4f8fd;
+}
+@media (min-width: 700px) {
+  .Newsletter section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .Newsletter section h1 {
+    flex: 2;
+  }
+  .Newsletter section div {
+    flex: 3;
+  }
+}
+.Newsletter div {
+  position: relative;
+  overflow: hidden;
+}
+.Newsletter div input {
+  all: unset;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 0 14px;
+  border: 0.8px solid #c0c0c0;
+  height: 44px;
+  width: 100%;
+  color: #000;
+}
+.Newsletter div button {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.JoinTeam {
+  padding: 50px 5%;
+  background-color: #fff;
+}
+.JoinTeam section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  align-self: baseline;
+}
+.JoinTeam section h1,
+.JoinTeam section p {
+  max-width: 600px;
+}
+.JoinTeam section .HeroButton {
+  display: flex;
+  gap: 1rem;
+}/*# sourceMappingURL=Home.module.css.map */
