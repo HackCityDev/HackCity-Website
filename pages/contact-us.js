@@ -14,10 +14,11 @@ export default function Mobile() {
     subject: "",
     message: "",
   });
+  console.log(data);
   return (
     <main className={styles.Services}>
       <section className={styles.ServicesHeader}>
-        <aside>
+        <aside className={styles.ServicesHeaderContent}>
           <Headers content="Contact Us" />
         </aside>
       </section>

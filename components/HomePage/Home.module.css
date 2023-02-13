@@ -37,12 +37,14 @@
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
+  box-sizing: border-box;
   font-size: 16px;
   line-height: 14px;
   padding: 15px 20px;
   text-align: center;
   transition: all 300ms ease-out;
   color: #ffffff;
+  cursor: pointer;
   background-color: #152a47;
 }
 .Button:hover {

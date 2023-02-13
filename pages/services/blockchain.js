@@ -8,7 +8,7 @@ export default function Blockchain() {
   return (
     <main className={styles.Services}>
       <section className={styles.ServicesHeader}>
-        <aside>
+        <aside className={styles.ServicesHeaderContent}>
           <Headers content="Blockchain Application" />
           <Paragraphs content="Services" />
         </aside>
