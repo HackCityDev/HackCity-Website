@@ -40,6 +40,16 @@ $boxShadow: 4.5px 4.5px 3.1px rgba(0, 0, 0, 0.024),
   align-items: center;
   width: 100%;
 }
+.Input {
+  all: unset;
+  box-sizing: border-box;
+  width: min(300px, 100%);
+  border: 1px solid #152a47;
+  background-color: #fff;
+  color: #000000;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
 .HighlightText {
   @include General();
   font-weight: 600;
