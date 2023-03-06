@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family-Poppins:wght@200;400;600&display=swap");
 .HighlightText {
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -46,6 +47,9 @@
   color: #ffffff;
   cursor: pointer;
   background-color: #152a47;
+  height: 100%;
+  position: relative;
+  display: block;
 }
 .Button:hover {
   color: rgb(21, 42, 71);
@@ -74,7 +78,7 @@
   align-items: center;
   width: 100%;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   align-items: flex-start;
   position: relative;
   padding: 50px 5%;
@@ -102,10 +106,13 @@
 .Index .IndexContainer {
   padding: 20px 5%;
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto;
 }
 .Index .IndexContainer .IndexProgress {
   margin: 20px 0;
+}
+.Index .IndexContainer .IndexProgress progress::-webkit-progress-bar {
+  background-color: #d9e7ff;
 }
 .Index .IndexContainer .IndexProgress progress[value] {
   height: 13px;
@@ -149,6 +156,16 @@
   flex-direction: column;
   gap: 10px;
 }
+.Index .IndexContainer .IndexQuestionaire .IndexQuestionaireBox .SuccessPage {
+  padding: 30px;
+}
+.Index .IndexContainer .IndexQuestionaire .IndexQuestionaireBox .SuccessPage aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 50px 0;
+}
 .Index .IndexContainer .IndexQuestionaire .IndexQuestionaireBox .IndexQuestionaireContent {
   display: flex;
   justify-content: center;
@@ -180,12 +197,18 @@
 }
 .Index .IndexContainer .IndexQuestionaire .IndexQuestionaireTextarea textarea {
   all: unset;
-  width: min(490px, 100%);
+  width: 100%;
   height: 150px;
   padding: 20px;
   border: 1px solid #000;
   color: #000;
   box-sizing: border-box;
+}
+.Index .IndexContainer .Submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .Index .IndexContainer .HireButton {
   display: flex;
@@ -205,6 +228,6 @@
     flex: 2;
   }
   .Index section .IndexContainer {
-    padding: 20px 1%;
+    padding: 30px 2.5%;
   }
 }/*# sourceMappingURL=Hire.module.css.map */

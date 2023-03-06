@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family-Poppins:wght@200;400;600&display=swap");
 .HighlightText {
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -46,6 +47,9 @@
   color: #ffffff;
   cursor: pointer;
   background-color: #152a47;
+  height: 100%;
+  position: relative;
+  display: block;
 }
 .Button:hover {
   color: rgb(21, 42, 71);
@@ -67,7 +71,7 @@
 .Hero {
   position: relative;
   background-color: #fff;
-  padding: 100px 5%;
+  padding: 100px 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +90,7 @@
   align-items: center;
   width: 100%;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   align-items: flex-start;
   align-self: baseline;
 }
@@ -102,7 +106,7 @@
 .Dev {
   position: relative;
   background-color: #fff;
-  padding: 0 5%;
+  padding: 0 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,17 +134,17 @@
   align-items: center;
   width: 100%;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   align-items: flex-start;
 }
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .Dev {
     flex-direction: column;
   }
 }
 
 .FlexBoxes {
-  padding: 30px 5%;
+  padding: 30px 10%;
   background-color: #fff;
 }
 .FlexBoxes .FlexBoxesContent {
@@ -156,6 +160,15 @@
   padding: 25px 20px;
   color: #000;
   max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  justify-content: unset;
+  flex-direction: column;
+  gap: 7px;
+  align-self: stretch;
+  margin: 0 auto;
 }
 .FlexBoxes .FlexBoxesContent aside div {
   display: flex;
@@ -178,21 +191,42 @@
 }
 
 .Startups {
-  padding: 30px 5%;
+  padding: 30px 10%;
   background: #ecf0ff;
 }
 .Startups .StartupsAssets {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+}
+.Startups .StartupsAssets > div {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  justify-items: stretch;
+  align-items: stretch;
+}
+.Startups .StartupsAssets > div > div {
   gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: flex;
+}
+.Startups .StartupsAssets > div .Image {
+  position: relative;
+  width: min(250px, 100%) !important;
+  padding-top: 100px;
+}
+@media (min-width: 700px) {
+  .Startups .StartupsAssets > div {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .Startups .StartupsAssets > div {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .Services {
-  padding: 30px 5%;
+  padding: 30px 10%;
   background: #fff;
 }
 .Services aside {
@@ -212,11 +246,39 @@
   box-shadow: 14px 22px 52px -12px rgba(127, 127, 127, 0.13);
   border-radius: 14px;
 }
+.Services div header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
 .Services div h1 {
   white-space: nowrap;
 }
 .Services div p {
   text-align: left;
+}
+.Services div .ServicesLearnmore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 0.5rem;
+}
+.Services div .ServicesLearnmore a {
+  background-image: linear-gradient(192.7deg, #0066ff 14.55%, #7000ff 91.2%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.Services div .ServicesLearnmore span {
+  transform: translateY(2px);
 }
 @media (min-width: 600px) {
   .Services div {
@@ -230,7 +292,7 @@
 }
 
 .Hire {
-  padding: 30px 5%;
+  padding: 30px 10%;
   background-color: #fff;
   display: flex;
   justify-content: center;
@@ -245,7 +307,7 @@
   align-items: center;
   width: 100%;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   align-items: flex-start;
 }
 .Hire section {
@@ -269,18 +331,29 @@
 }
 
 .Newsletter {
-  padding: 30px 5%;
+  padding: 30px 10%;
   background-color: #f4f8fd;
+}
+.Newsletter section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  gap: 15px;
+}
+.Newsletter section div {
+  width: 100%;
 }
 @media (min-width: 700px) {
   .Newsletter section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    flex-direction: row;
   }
-  .Newsletter section h1 {
+  .Newsletter section aside {
     flex: 2;
+  }
+  .Newsletter section aside h1 {
+    max-width: 300px;
   }
   .Newsletter section div {
     flex: 3;
@@ -293,10 +366,10 @@
 .Newsletter div input {
   all: unset;
   background-color: #fff;
-  border-radius: 8px;
   padding: 0 14px;
   border: 0.8px solid #c0c0c0;
   height: 44px;
+  border-radius: 8px;
   width: 100%;
   color: #000;
 }
@@ -307,7 +380,7 @@
 }
 
 .JoinTeam {
-  padding: 50px 5%;
+  padding: 50px 10%;
   background-color: #fff;
 }
 .JoinTeam section {
@@ -316,7 +389,7 @@
   align-items: center;
   width: 100%;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   align-items: flex-start;
   align-self: baseline;
 }

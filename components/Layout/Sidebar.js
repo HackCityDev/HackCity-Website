@@ -5,6 +5,7 @@ import Close from "../../assets/Close";
 import Logo from "../../assets/Logo";
 import styles from "./Layout.module.css";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 export default function Sidebar({ setIsOpen }) {
   const [expand, setExpand] = useState(false);
   let menuRef = useRef();
@@ -24,7 +25,13 @@ export default function Sidebar({ setIsOpen }) {
     };
   });
   return (
-    <div className={styles.Sidebar} ref={menuRef}>
+    <motion.div
+      initial={{ x: 100, opacity: 0.5 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: 100, opacity: 1 }}
+      transition={{ duration: 1 }}
+      className={styles.Sidebar}
+      ref={menuRef}>
       <div className={styles.sidebarContainer}>
         <div className={styles.logoAndClose}>
           <div className={styles.logo}>
@@ -53,15 +60,23 @@ export default function Sidebar({ setIsOpen }) {
                     <span>{expand ? <FiChevronUp /> : <FiChevronDown />}</span>
                   </div>
                   {expand && (
-                    <ul>
-                      {link.dropdown.map((item) => (
-                        <li onClick={() => setIsOpen(false)} key={item.name}>
-                          <Link href={item.link}>
-                            <a>{item.name}</a>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                    <AnimatePresence>
+                      <motion.ul
+                        initial={{ opacity: 0, scale: 0.6 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0 }}
+                        transition={{ duration: 1 }}>
+                        {link.dropdown.map((item) => (
+                          <motion.li
+                            onClick={() => setIsOpen(false)}
+                            key={item.name}>
+                            <Link href={item.link}>
+                              <a>{item.name}</a>
+                            </Link>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    </AnimatePresence>
                   )}
                 </aside>
               ) : (
@@ -74,7 +89,16 @@ export default function Sidebar({ setIsOpen }) {
             </div>
           ))}
         </div>
+        <aside className={styles.hireUsButton}>
+          <div className={styles.hireUs} onClick={() => setIsOpen(false)}>
+            <Link href={"/hire-us"}>
+              <a>
+                <span>Hire Developers</span>
+              </a>
+            </Link>
+          </div>
+        </aside>
       </div>
-    </div>
+    </motion.div>
   );
 }

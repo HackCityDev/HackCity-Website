@@ -17,12 +17,13 @@
     .ServicesHeaderContent {
       position: absolute;
       top: 50%;
-      left: 5%;
+      left: $leftRight;
+      right: $leftRight;
       transform: translateY(-50%);
     }
   }
   .ServicesBody {
-    padding: 0 5%;
+    padding: 0 $leftRight;
     display: flex;
     flex-direction: column;
     .ServicesTop {
@@ -63,8 +64,10 @@
   }
   .ServicesBottom {
     @include Flex();
+    width: 80%;
+    margin: auto;
     flex-direction: column;
-    padding: 14px;
+    padding: 21px 51px;
     h1 {
       @include General();
       font-weight: 700;
@@ -74,9 +77,13 @@
       margin: 1rem 0;
     }
     background: linear-gradient(192.7deg, #152a47 14.55%, #032555 91.2%);
+    @media (min-width: $breakpoint-mobile) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
-  .ServicesFooter {
-    padding: 0 5%;
+  .ContactUs {
+    padding: 0 $leftRight;
     @include Flex();
     gap: 1rem;
     flex-direction: column;
@@ -87,11 +94,12 @@
       align-self: baseline;
       background: linear-gradient(192.7deg, #152a47 14.55%, #032555 91.2%);
       border-radius: 10px;
-      flex: 1;
+      flex: 0.85;
       color: #fff;
       h1 {
         font-weight: 600;
         font-size: clamp(17px, 25px, 32px);
+        margin: 0 0 10px;
       }
       div {
         @include Flex();
@@ -165,7 +173,7 @@
     }
   }
   .NewsAndEvents {
-    padding: 0 5%;
+    padding: 0 $leftRight;
     background-color: #fff;
     color: #000;
     .NewsAndEventsFeatured {
@@ -235,11 +243,11 @@
           .NewsAndEventsLatestImage {
             flex: 1;
             position: relative;
-            width: min(300px, 100%);
-            padding-top: 200px;
-            box-shadow: 2px 5px 40px -12px #020518;
-            border-radius: 10px;
+            padding-top: min(50%, 186px);
+            width: 100%;
             overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 2px 5px 40px -12px #020518;
           }
           .NewsAndEventsLatestContent {
             flex: 1;
@@ -273,6 +281,7 @@
           border: 1px solid #d0d5dd;
           padding: 8px 14px;
           display: flex;
+          gap: 7px;
           align-items: center;
           box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
           border-radius: 8px;
@@ -293,6 +302,103 @@
     @media (min-width: 600px) {
       @include Flex();
       gap: 2rem;
+    }
+  }
+  .NewsAndEventsDynamic {
+    padding: 1% $leftRight;
+    .NewsAndEventsDynamicBack {
+      background: linear-gradient(192.7deg, #152a47 14.55%, #032555 91.2%);
+      @include TransparentText();
+      @include General();
+      @include Flex();
+      justify-content: flex-start;
+      gap: 20px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      font-size: 20px;
+      line-height: 30px;
+    }
+    .NewsAndEventsDynamicContent {
+      @include Flex();
+      flex-direction: column;
+      .NewsAndEventsDynamicMain {
+        @include BOX();
+        p {
+          font-size: 16px;
+        }
+        .Image {
+          position: relative;
+          width: 100%;
+          padding-top: 70%;
+        }
+        button {
+          &:hover {
+            color: #fff;
+            border: none;
+            transform: scale(1.01);
+          }
+        }
+        .NewsAndEventsDynamicFeaturedContent {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          flex-wrap: wrap;
+          p {
+            font-size: 13px;
+            color: #656464;
+          }
+        }
+      }
+      .NewsAndEventsDynamicNews {
+        @include Flex();
+        position: relative;
+        flex-direction: column;
+        gap: 1.3rem;
+        margin: 1.5rem 0;
+        align-items: flex-start;
+        border-bottom: 1px solid #eaecf0;
+        padding-bottom: 30px;
+        .Content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          gap: 1rem;
+          border-radius: 10px;
+          cursor: pointer;
+          padding: 10px 0;
+          transition: all 300ms ease-in-out;
+          h1 {
+            color: #3a3a3a;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 22px;
+            @include General();
+          }
+          div {
+            display: flex;
+            gap: 20px;
+            p {
+              font-size: 12px;
+              color: #656464;
+            }
+          }
+          &:hover {
+            box-shadow: $boxShadow;
+          }
+        }
+      }
+      @media (min-width: 800px) {
+        flex-direction: row;
+        gap: 2rem;
+        .NewsAndEventsDynamicMain {
+          flex: 6.5;
+        }
+        .NewsAndEventsDynamicNews {
+          flex: 3.5;
+          align-self: baseline;
+        }
+      }
     }
   }
 }

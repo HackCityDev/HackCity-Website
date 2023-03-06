@@ -10,26 +10,43 @@ import arrow from "./Assets/Services/arrow.png";
 import Image from "next/image";
 import Paragraphs from "../General/Paragraphs";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 export default function Services() {
   return (
     <main className={styles.Services}>
       <section className={styles.ServicesContent}>
         <Headers content="Our Services" style={{ fontSize: "22px" }} />
-        <aside>
-          {services.map((service) => (
-            <div key={service.title}>
-              <Image width={30} height={30} src={service.image} />
-              <Headers content={service.title} style={{ fontSize: "22px" }} />
-              <Paragraphs content={service.content} />
-              <span>
-                <Image width={16.67} height={16.67} src={arrow} />
-                <Link href={service.link}>
-                  <a>Learn More</a>
-                </Link>
-              </span>
-            </div>
-          ))}
-        </aside>
+        <motion.aside
+          variants={cardscontainer}
+          initial="init"
+          whileInView="final"
+          viewport={{ once: true }}>
+          <AnimatePresence>
+            {services.map((service) => (
+              <motion.div variants={card} key={service.title}>
+                <header>
+                  <Image
+                    width={30}
+                    height={30}
+                    src={service.image}
+                    alt="image"
+                  />
+                  <Headers
+                    content={service.title}
+                    style={{ fontSize: "22px" }}
+                  />
+                  <Paragraphs content={service.content} />
+                </header>
+                <span className={styles.ServicesLearnmore}>
+                  <Image width={16.67} height={16.67} src={arrow} alt="image" />
+                  <Link href={service.link}>
+                    <a>Learn More</a>
+                  </Link>
+                </span>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.aside>
       </section>
     </main>
   );
@@ -78,3 +95,28 @@ let services = [
     link: "",
   },
 ];
+
+const card = {
+  init: {
+    opacity: 0,
+    y: -150,
+    
+  },
+  final: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 1 },
+  },
+};
+
+const cardscontainer = {
+  init: {
+    opacity: 0,
+  },
+  final: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5,
+    },
+  },
+};

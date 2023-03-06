@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family-Poppins:wght@200;400;600&display=swap");
+
 html,
 body {
   padding: 0;
@@ -7,6 +9,7 @@ body {
   overflow-x: hidden;
   background-color: #fff;
   color: #000;
+  font-family: "Poppins", sans-serif;
 }
 
 a {
@@ -51,4 +54,36 @@ ul {
 
 ul {
   list-style: none;
+}
+
+.PageLoadingModal {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 95px 24px;
+  height: 100vh;
+  inset: 0px;
+  overflow: auto;
+  display: flex;
+  transform: translate3d(0px, 0px, 0px);
+  will-change: opacity;
+  color: white;
+  backface-visibility: hidden;
+  backdrop-filter: blur(20px);
+  perspective: 1000px;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 2222;
+  flex-direction: column;
+}
+.loadingText {
+  position: relative;
+  font-size: clamp(16px, 1.2rem, 2.1vw);
+  font-family: "Major Mono Display", monospace;
+}
+.loadingText h1 {
+  position: relative;
+  letter-spacing: 5px;
+  padding-top: 30px;
+  color: #fff;
+  overflow: hidden;
 }

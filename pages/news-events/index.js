@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import Headers from "../components/General/Headers";
-import Paragraphs from "../components/General/Paragraphs";
+import Headers from "../../components/General/Headers";
+import Paragraphs from "../../components/General/Paragraphs";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
-import featuredImage from "../assets/image345.png";
-import image1 from "../assets/image348.png";
-import image2 from "../assets/image349.png";
-import image3 from "../assets/image347.png";
-import styles from "../styles/services.module.css";
-import Button from "../components/General/Button";
-import Newsletter from "../components/HomePage/Newsletter";
+import featuredImage from "../../assets/image345.png";
+import image1 from "../../assets/image348.png";
+import image2 from "../../assets/image349.png";
+import image3 from "../../assets/image347.png";
+import image4 from "../../assets/image346.png";
+import styles from "../../styles/services.module.css";
+import Button from "../../components/General/Button";
+import Newsletter from "../../components/HomePage/Newsletter";
+import { slugLink } from "../../utils/utils";
 export default function NewsAndEvents() {
   return (
     <main className={styles.Services}>
@@ -33,7 +35,7 @@ export default function NewsAndEvents() {
             <p>2 mins to read</p>
             <p>11th Jan. 2023</p>
           </div>
-          <h1>Largest Gathering of Techies in Lagos, Nigeria</h1>
+          <h1>{header}</h1>
           <Paragraphs
             content="sending an email using an email client or application you've configured to use SMTP2GO. We'll watch for it to make sure it's all working properly sending an email using an email client or application you've configured to use SMTP2GO. We'll watch for it to make sure it's all working properly"
             style={{ fontSize: 13, lineHeight: "20px" }}
@@ -42,7 +44,7 @@ export default function NewsAndEvents() {
             content="sending an email using an email client or application you've configured to use SMTP2GO. We'll watch for it to make sure it's all working properly sending an email using an email client or application you've configured to use SMTP2GO. We'll watch for it to make sure it's all working properly ..."
             style={{ fontSize: 13, lineHeight: "20px" }}
           />
-          <Link href="#">
+          <Link href={`/news-events/${slugLink(header)}`}>
             <a>Read more</a>
           </Link>
         </aside>
@@ -52,7 +54,7 @@ export default function NewsAndEvents() {
             {latestNews.map((news, i) => (
               <div key={i} className={styles.NewsAndEventsLatestNews}>
                 <div className={styles.NewsAndEventsLatestImage}>
-                  <Image src={news.image} objectFit="contain" layout="fill" />
+                  <Image src={news.image} objectFit="cover" layout="fill" />
                 </div>
                 <div className={styles.NewsAndEventsLatestContent}>
                   <Button
@@ -96,7 +98,7 @@ export default function NewsAndEvents() {
     </main>
   );
 }
-let latestNews = [
+export const latestNews = [
   {
     image: image1,
     button: "Education",
@@ -110,12 +112,13 @@ let latestNews = [
   {
     image: image3,
     button: "Education",
-    header: "Proper investment that yield results",
+    header: "Get the next big Opportunity in Tech",
   },
   {
-    image: featuredImage,
+    image: image4,
     button: "Finance",
-    header: "Proper investment that yield results",
+    header: "Hangout with Hack City Techie",
   },
 ];
 let buttons = [1, 2, 3, "...", 8, 9, 10];
+let header = "Largest Gathering of Techies in Lagos, Nigeria";

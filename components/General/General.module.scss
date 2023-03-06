@@ -1,3 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family-Poppins:wght@200;400;600&display=swap");
+$leftRight: 10%;
+$breakpoint-mobile: 750px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$boxShadow: 4.5px 4.5px 3.1px rgba(0, 0, 0, 0.024),
+  12.5px 12.5px 8.5px rgba(0, 0, 0, 0.035),
+  30.1px 30.1px 20.5px rgba(0, 0, 0, 0.046),
+  100px 100px 68px rgba(0, 0, 0, 0.07);
+@mixin TransparentText {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+@mixin Webkit {
+  &::-webkit-scrollbar {
+    width: 8px;
+    display: block;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #000000;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: transparent;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #b8b8b8;
+  }
+}
 @mixin General {
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -24,10 +56,7 @@
   font-size: clamp(28px, 32px, 56px);
   line-height: clamp(30px, 38px, 66px);
   background: linear-gradient(192.7deg, #152a47 14.55%, #032555 91.2%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  @include TransparentText();
 }
 
 .Paragraphs {
@@ -52,6 +81,9 @@
   color: #ffffff;
   cursor: pointer;
   background-color: #152a47;
+  height: 100%;
+  position: relative;
+  display: block;
   &:hover {
     color: rgba(21, 42, 71, 1);
     background-color: #ffffff;
@@ -72,6 +104,6 @@
 @mixin BOX {
   @include Flex();
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   align-items: flex-start;
 }

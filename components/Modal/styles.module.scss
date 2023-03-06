@@ -1,0 +1,129 @@
+@use "../General/General.module.scss" as G;
+
+@mixin InputBarContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px 0;
+  .inputBar {
+    display: flex;
+    flex-direction: column;
+    margin: 0.88rem 0;
+    width: 100%;
+    position: relative;
+    input {
+      padding: 0.3rem 0.5rem;
+      outline: none;
+      margin: 10px 0;
+      height: 40px;
+      background: none;
+      border-radius: 5px;
+      color: #000;
+      font-size: 14px;
+      border: 1px solid #656464;
+    }
+  }
+}
+.Form {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  @include G.Webkit();
+  backdrop-filter: brightness(0.5);
+  .FormModal {
+    position: absolute;
+    background: #fff;
+    padding: 2rem;
+    right: 0;
+    width: min(500px, 100%);
+    .FormClose {
+      svg {
+        cursor: pointer;
+      }
+    }
+    .FormBody {
+      @include InputBarContainer();
+      .FormCheckbox {
+        margin: 10px 0;
+      }
+      .checkboxes {
+        display: flex;
+        margin: 5px 0;
+        gap: 0.85rem;
+        flex-wrap: wrap;
+        .inputOthers {
+          all: unset;
+          display: inline;
+          border-bottom: 1px solid #656464;
+        }
+      }
+      .filters {
+        position: relative;
+        margin: 0.88rem 0;
+        aside {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}
+
+.Filters {
+  background: none;
+  position: relative;
+  .filterCurrent {
+    cursor: pointer;
+    border-radius: 7px;
+    width: 100%;
+    padding: 0.2rem 0.5rem;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: 1px solid rgb(0, 0, 0, 0.9);
+  }
+  .filter {
+    border-radius: 7px;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    padding: 0.2rem 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: none;
+    background-color: rgba(13, 13, 13, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgb(0, 0, 0, 0.9);
+    opacity: 1;
+    gap: 0.5rem;
+    div {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 200px;
+      opacity: 0.8;
+      background: none;
+      cursor: pointer;
+      padding: 0.5rem 0.6rem;
+      transition: opacity 200ms ease-in;
+      &:hover {
+        opacity: 1;
+        background-color: rgba(13, 13, 13);
+      }
+    }
+  }
+}
+
+.active {
+  background-color: #1f202e !important;
+  color: white;
+  opacity: 1 !important;
+}

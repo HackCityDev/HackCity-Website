@@ -1,7 +1,7 @@
 import styles from "./styles/Subheader.module.css";
 import Wheel1 from "./Asset/MobBackgroundImg1";
-import HalveWheel from "./asset/MobBackgroundImg3";
-import Halvemoon from "./asset/MobBackgroundImg2";
+import HalveWheel from "./Asset/MobBackgroundImg3";
+import Halvemoon from "./Asset/MobBackgroundImg2";
 import Headers from "../General/Headers";
 import Paragraphs from "../General/Paragraphs";
 

@@ -17,6 +17,7 @@ export default function JoinTeam() {
               Hire us <IoIosArrowRoundForward />
             </span>
           }
+          link={"/hire-us"}
         />
       </section>
     </main>

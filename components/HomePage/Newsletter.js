@@ -5,7 +5,10 @@ export default function Newsletter() {
   return (
     <main className={styles.Newsletter}>
       <section>
-        <Headers content="Subscribe to our newsletter" />
+        <aside>
+          <Headers content="Subscribe to our newsletter" />
+        </aside>
+
         <div>
           <input placeholder="enter your email" />
           <Button content="Subscribe" />

@@ -2,23 +2,33 @@ import Cog from "./Assets/Cog";
 import Target from "./Assets/Target";
 import UserFemale from "./Assets/UserFemale";
 import styles from "./Home.module.css";
+import { motion, AnimatePresence } from "framer-motion";
 export default function FlexBoxes() {
   return (
     <main className={styles.FlexBoxes}>
-      <section className={styles.FlexBoxesContent}>
-        {box.map((content) => (
-          <aside key={content.title}>
-            <div>
-              {content.icon}
-              <h3> {content.title}</h3>
-            </div>
-            <p>{content.content}</p>
-          </aside>
-        ))}
-      </section>
+      <motion.section
+      variants={cardscontainer}
+      initial="init"
+      whileInView="final"
+      transition={{duration:1}}
+      viewport={{once:true}}
+      className={styles.FlexBoxesContent}>
+        <AnimatePresence>
+          {box.map((content) => (
+            <motion.aside variants={cards} key={content.title}>
+              <div>
+                {content.icon}
+                <h3> {content.title}</h3>
+              </div>
+              <p>{content.content}</p>
+            </motion.aside>
+          ))}
+        </AnimatePresence>
+      </motion.section>
     </main>
   );
 }
+
 let box = [
   {
     title: "Tech. + Business",
@@ -39,3 +49,28 @@ let box = [
     icon: <Target />,
   },
 ];
+
+
+//framer motion variants
+
+const cards = {
+  init: {
+    x:-100, opacity:0
+  },
+  final: {
+    x: 0, opacity:1,
+    transition: { duration: 1 },
+  },
+};
+
+const cardscontainer = {
+  init: {
+    opacity: 0, x:100
+  },
+  final: {
+    opacity: 1, x:0,
+    transition: {
+      staggerChildren: 0.4,
+    },
+  },
+};

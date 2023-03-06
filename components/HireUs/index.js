@@ -14,6 +14,9 @@ import { GiCircle, GiPlainCircle } from "react-icons/gi";
 import styles from "./Hire.module.css";
 import { useState } from "react";
 import Image from "next/image";
+import Success from "./Assets/Success";
+import Notification from "../Notifications/Notification";
+import useTimeout from "../../hooks/useTimeout";
 export default function HireUs() {
   const isMobile = useMQ("(max-width: 900px)");
   const [selection, setSelection] = useState([
@@ -30,7 +33,7 @@ export default function HireUs() {
   ]);
   const [content, setContent] = useState(["", "", "", "", ""]);
   const [view, setView] = useState(0);
-  console.log(selection);
+  const [notify, setNotify] = useState(false);
   let currentStyle = {
     visibility: view > 0 ? "visible" : "hidden",
   };
@@ -57,8 +60,10 @@ export default function HireUs() {
     updatedContent[i] = e?.target?.value ? e.target.value : e;
     setContent(updatedContent);
   }
+  useTimeout(() => setNotify(false), 5000, [setNotify, view, notify]);
   return (
     <main className={styles.Index}>
+      {notify && <Notification close={setNotify} action={"Make a selection"} />}
       <section>
         {isMobile ? (
           <aside className={styles.IndexHeaders}>
@@ -70,9 +75,13 @@ export default function HireUs() {
           </aside>
         ) : (
           <aside className={styles.IndexImage}>
-            <HiOutlineArrowNarrowLeft
-              onClick={view > 0 ? () => setView(view - 2) : () => setView(view)}
-            />
+            {view / 2 !== 5 && (
+              <HiOutlineArrowNarrowLeft
+                onClick={
+                  view > 0 ? () => setView(view - 2) : () => setView(view)
+                }
+              />
+            )}
             <Image objectFit="cover" layout="fill" src={assets[view / 2]} />
           </aside>
         )}
@@ -90,21 +99,25 @@ export default function HireUs() {
             <progress value={view * 10} max={100}></progress>
           </div>
           <div className={styles.IndexQuestionaire}>
-            <div className={styles.IndexQuestionaireHeader}>
-              <GiPlainCircle
-                style={{
-                  color: "#0F2A51",
-                }}
-              />
-              <Paragraphs
-                content={questionHeaders[view / 2]}
-                style={{ fontSize: "16px" }}
-              />
-            </div>
+            {view / 2 !== 5 && (
+              <div className={styles.IndexQuestionaireHeader}>
+                <GiPlainCircle
+                  style={{
+                    color: "#0F2A51",
+                  }}
+                />
+                <Paragraphs
+                  content={questionHeaders[view / 2]}
+                  style={{ fontSize: "16px" }}
+                />
+              </div>
+            )}
             <div className={styles.IndexQuestionaireBox}>
-              {view / 2 !== 4
-                ? questions[view / 2].map((question) => (
+              {view / 2 !== 4 ? (
+                questions[view / 2].length > 0 ? (
+                  questions[view / 2].map((question, i) => (
                     <div
+                      key={i}
                       className={styles.IndexQuestionaireContent}
                       onClick={() => setUserSelection(question, view / 2)}
                     >
@@ -116,17 +129,34 @@ export default function HireUs() {
                       <span>{question}</span>
                     </div>
                   ))
-                : questions[4].map((question, i) => (
-                    <label>
-                      <span>{question}</span>
-                      <input
-                        onChange={(e) => setUserSelection(e, 4)}
-                        placeholder={questionExamples[i]}
-                        name={question}
-                        className={styles.IndexQuestionaireInput}
-                      />
-                    </label>
-                  ))}
+                ) : (
+                  <div className={styles.SuccessPage}>
+                    <aside>
+                      <Success />
+                    </aside>
+                    <Paragraphs
+                      content="Thank you for reaching out to us with the important details of your project.  One of Management team will reach out to you within 24hours"
+                      style={{
+                        color: "#656464",
+                        textAlign: "center",
+                        fontSize: 20,
+                      }}
+                    />
+                  </div>
+                )
+              ) : (
+                questions[4].map((question, i) => (
+                  <label key={i}>
+                    <span>{question}</span>
+                    <input
+                      onChange={(e) => setUserSelection(e, 4)}
+                      placeholder={questionExamples[i]}
+                      name={question}
+                      className={styles.IndexQuestionaireInput}
+                    />
+                  </label>
+                ))
+              )}
             </div>
           </div>
           {questionFooters[view / 2] ? (
@@ -146,12 +176,14 @@ export default function HireUs() {
                 <div className={styles.IndexQuestionaireTextarea}>
                   <textarea
                     onChange={(e) => setUserContent(e, view / 2)}
+                    value={content[view / 2]}
                   ></textarea>
                 </div>
               ) : (
                 <div className={styles.IndexQuestionaireBox}>
-                  {footersQuestions.map((question) => (
+                  {footersQuestions.map((question, i) => (
                     <div
+                      key={i}
                       className={styles.IndexQuestionaireContent}
                       onClick={() => setUserContent(question, view / 2)}
                     >
@@ -167,23 +199,29 @@ export default function HireUs() {
               )}
             </div>
           ) : null}
-          <div className={styles.HireButton}>
-            <Button
-              content="Previous"
-              style={currentStyle}
-              action={() => setView(view - 2)}
-              oppose={true}
-            />
-            <Button
-              content="Next"
-              action={
-                selection[view / 2]
-                  ? () => setView(view + 2)
-                  : () => alert("Make a selection")
-              }
-              style={newStyle}
-            />
-          </div>
+          {view / 2 !== 5 ? (
+            <div className={styles.HireButton}>
+              <Button
+                content="Previous"
+                style={currentStyle}
+                action={() => setView(view - 2)}
+                oppose={true}
+              />
+              <Button
+                content={view / 2 !== 4 ? "Next" : "Submit"}
+                action={
+                  selection[view / 2]
+                    ? () => setView(view + 2)
+                    : () => setNotify(true)
+                }
+                style={newStyle}
+              />
+            </div>
+          ) : (
+            <div className={styles.Submit}>
+              <Button content="Home page" link="/" />
+            </div>
+          )}
         </aside>
       </section>
       <Startups />
@@ -191,7 +229,7 @@ export default function HireUs() {
   );
 }
 let questionHeaders = [
-  <span>
+  <span key={0}>
     What can <b>Hack City Tech</b> do for you?
   </span>,
   "What is the Application/Product Domain?",
@@ -230,10 +268,11 @@ let questions = [
   ],
   ["$1,000 - $3,000+", "$4,000 - $9,000+", "$10,000 and above", "Not decided"],
   ["Full Name", "Work Email", "Company Name", "Position"],
+  [],
 ];
 let page = ["One", "Two", "Three", "Four", "Five"];
 let questionFooters = [
-  <span>
+  <span key={0}>
     What can <b>Hack City Tech</b> do for you?
   </span>,
   "Others",

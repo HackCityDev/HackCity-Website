@@ -3,7 +3,7 @@
 .Hero {
   position: relative;
   background-color: #fff;
-  padding: 100px 5%;
+  padding: 100px $leftRight;
   @include Flex();
   section {
     flex: 1;
@@ -28,7 +28,7 @@
 .Dev {
   position: relative;
   background-color: #fff;
-  padding: 0 5%;
+  padding: 0 $leftRight;
   @include Flex();
   gap: 10px;
   .DevImage {
@@ -49,12 +49,12 @@
     flex: 3;
     @include BOX();
   }
-  @media (max-width: 600px) {
+  @media (max-width: calc($breakpoint-mobile - 100px)) {
     flex-direction: column;
   }
 }
 .FlexBoxes {
-  padding: 30px 5%;
+  padding: 30px $leftRight;
   background-color: #fff;
   .FlexBoxesContent {
     @include Flex();
@@ -65,6 +65,12 @@
       padding: 25px 20px;
       color: #000;
       max-width: 500px;
+      @include Flex();
+      justify-content: unset;
+      flex-direction: column;
+      gap: 7px;
+      align-self: stretch;
+      margin: 0 auto;
       div {
         @include Flex();
         h3 {
@@ -74,10 +80,8 @@
         }
       }
     }
-    @media (max-width: 800px) {
+    @media (max-width: calc($breakpoint-mobile + 50px)) {
       flex-direction: column;
-      aside {
-      }
       h3 {
         white-space: normal;
       }
@@ -85,17 +89,37 @@
   }
 }
 .Startups {
-  padding: 30px 5%;
+  padding: 30px $leftRight;
   background: #ecf0ff;
   .StartupsAssets {
-    @include Flex();
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    width: 100%;
+    & > div {
+      display: grid;
+      width: 100%;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      justify-items: stretch;
+      align-items: stretch;
+      & > div {
+        gap: 1rem;
+        display: flex;
+      }
+      .Image {
+        position: relative;
+        width: min(250px, 100%) !important;
+        padding-top: 100px;
+      }
+      @media (min-width: 700px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (min-width: 1200px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
   }
 }
 .Services {
-  padding: 30px 5%;
+  padding: 30px $leftRight;
   background: #fff;
   aside {
     display: flex;
@@ -113,26 +137,51 @@
     background: #ffffff;
     box-shadow: 14px 22px 52px -12px rgba(127, 127, 127, 0.13);
     border-radius: 14px;
+    header {
+      @include Flex();
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
     h1 {
       white-space: nowrap;
     }
     p {
       text-align: left;
     }
+    .ServicesLearnmore {
+      @include Flex();
+      width: fit-content;
+      gap: 0.5rem;
+      a {
+        background-image: linear-gradient(
+          192.7deg,
+          #0066ff 14.55%,
+          #7000ff 91.2%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      span {
+        transform: translateY(2px);
+      }
+    }
   }
-  @media (min-width: 600px) {
+  @media (min-width: calc($breakpoint-mobile - 150px)) {
     div {
       flex: calc(33.33% - 20px);
     }
   }
-  @media (min-width: 900px) {
+  @media (min-width: calc($breakpoint-mobile + 150px)) {
     div {
       flex: calc(25% - 20px);
     }
   }
 }
 .Hire {
-  padding: 30px 5%;
+  padding: 30px $leftRight;
   background-color: #fff;
   @include Flex();
   gap: 1rem;
@@ -148,7 +197,7 @@
     width: 100%;
     padding-top: min(294px, 100%);
   }
-  @media (min-width: 800px) {
+  @media (min-width: calc($breakpoint-mobile + 50px)) {
     flex-direction: row;
     .HireContent {
       order: 1;
@@ -159,13 +208,22 @@
   }
 }
 .Newsletter {
-  padding: 30px 5%;
+  padding: 30px $leftRight;
   background-color: #f4f8fd;
   section {
-    @media (min-width: 700px) {
-      @include Flex();
-      h1 {
+    @include Flex();
+    flex-direction: column;
+    gap: 15px;
+    div {
+      width: 100%;
+    }
+    @media (min-width: calc($breakpoint-mobile - 50px)) {
+      flex-direction: row;
+      aside {
         flex: 2;
+        h1 {
+          max-width: 300px;
+        }
       }
       div {
         flex: 3;
@@ -178,10 +236,10 @@
     input {
       all: unset;
       background-color: #fff;
-      border-radius: 8px;
       padding: 0 14px;
       border: 0.8px solid #c0c0c0;
       height: 44px;
+      border-radius: 8px;
       width: 100%;
       color: #000;
     }
@@ -193,7 +251,7 @@
   }
 }
 .JoinTeam {
-  padding: 50px 5%;
+  padding: 50px $leftRight;
   background-color: #fff;
   section {
     @include BOX();

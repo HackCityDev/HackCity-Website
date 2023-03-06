@@ -7,11 +7,11 @@ import Hamburger from "../../assets/Hamburger";
 import Sidebar from "./Sidebar";
 import Link from "next/link";
 
+import { motion, AnimatePresence } from "framer-motion";
 function Navbar() {
-  const isMobile = useMQ("(max-width: 700px)");
+  const isMobile = useMQ("(max-width: 750px)");
   const [isOpen, setIsOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  console.log(showDropdown);
 
   let menuRef = useRef();
   useEffect(() => {
@@ -65,17 +65,26 @@ function Navbar() {
                         </span>
                       </div>
                     )}
-                    {showDropdown && (
-                      <ul ref={menuRef}>
-                        {link.dropdown.map((item) => (
-                          <li onClick={() => setIsOpen(false)} key={item.name}>
-                            <Link href={item.link}>
-                              <a>{item.name}</a>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                    <AnimatePresence>
+                      {showDropdown && (
+                        <motion.ul
+                          initial={{ opacity: 0, x: -100 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.8 }}
+                          exit={{ opacity: 0, y: 50 }}
+                          ref={menuRef}>
+                          {link.dropdown.map((item) => (
+                            <li
+                              onClick={() => setShowDropdown(false)}
+                              key={item.name}>
+                              <Link href={item.link}>
+                                <a>{item.name}</a>
+                              </Link>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
                   </aside>
                 ) : (
                   <aside onClick={() => setIsOpen(false)}>
@@ -103,7 +112,9 @@ function Navbar() {
             </div>
           </aside>
         )}
-        {isOpen && <Sidebar setIsOpen={setIsOpen} />}
+        <AnimatePresence>
+          {isOpen && <Sidebar setIsOpen={setIsOpen} />}
+        </AnimatePresence>
       </div>
     </nav>
   );
@@ -114,7 +125,7 @@ export default Navbar;
 export const Links = [
   {
     name: "Services",
-    link: "",
+    link: "/",
     dropdown: [
       { link: "/services/mobile", name: "Mobile App Development" },
       { link: "/services/web", name: "Web App Development" },
@@ -124,6 +135,10 @@ export const Links = [
       { link: "/services/pnp", name: "PnP Microservices" },
     ],
   },
-  { name: "Career", link: "/join-us" },
+  {
+    name: "News/Events",
+    link: "/news-events",
+  },
+  { name: "Career", link: "/careers" },
   { name: "Contact Us", link: "/contact-us" },
 ];

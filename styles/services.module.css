@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family-Poppins:wght@200;400;600&display=swap");
 .HighlightText {
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -46,6 +47,9 @@
   color: #ffffff;
   cursor: pointer;
   background-color: #152a47;
+  height: 100%;
+  position: relative;
+  display: block;
 }
 .Button:hover {
   color: rgb(21, 42, 71);
@@ -83,11 +87,12 @@
 .Services .ServicesHeader .ServicesHeaderContent {
   position: absolute;
   top: 50%;
-  left: 5%;
+  left: 10%;
+  right: 10%;
   transform: translateY(-50%);
 }
 .Services .ServicesBody {
-  padding: 0 5%;
+  padding: 0 10%;
   display: flex;
   flex-direction: column;
 }
@@ -101,7 +106,7 @@
   align-items: center;
   width: 100%;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   align-items: flex-start;
 }
 .Services .ServicesBody .ServicesTop div {
@@ -139,8 +144,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  width: 80%;
+  margin: auto;
   flex-direction: column;
-  padding: 14px;
+  padding: 21px 51px;
   background: linear-gradient(192.7deg, #152a47 14.55%, #032555 91.2%);
 }
 .Services .ServicesBottom h1 {
@@ -152,8 +159,14 @@
   color: #fff;
   margin: 1rem 0;
 }
-.Services .ServicesFooter {
-  padding: 0 5%;
+@media (min-width: 750px) {
+  .Services .ServicesBottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.Services .ContactUs {
+  padding: 0 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -161,7 +174,7 @@
   gap: 1rem;
   flex-direction: column;
 }
-.Services .ServicesFooter .ServicesLeft {
+.Services .ContactUs .ServicesLeft {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,14 +184,15 @@
   align-self: baseline;
   background: linear-gradient(192.7deg, #152a47 14.55%, #032555 91.2%);
   border-radius: 10px;
-  flex: 1;
+  flex: 0.85;
   color: #fff;
 }
-.Services .ServicesFooter .ServicesLeft h1 {
+.Services .ContactUs .ServicesLeft h1 {
   font-weight: 600;
   font-size: 25px;
+  margin: 0 0 10px;
 }
-.Services .ServicesFooter .ServicesLeft div {
+.Services .ContactUs .ServicesLeft div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -187,29 +201,29 @@
   justify-content: unset;
   margin: 20px 0;
 }
-.Services .ServicesFooter .ServicesLeft div p span {
+.Services .ContactUs .ServicesLeft div p span {
   display: flex;
   flex-direction: column;
 }
-.Services .ServicesFooter .ServicesRight {
+.Services .ContactUs .ServicesRight {
   flex: 1;
   width: 100%;
 }
-.Services .ServicesFooter .ServicesRight form {
+.Services .ContactUs .ServicesRight form {
   padding: 0 20px;
 }
-.Services .ServicesFooter .ServicesRight h1 {
+.Services .ContactUs .ServicesRight h1 {
   padding: 0 18px;
   font-weight: 600;
   font-size: 25px;
   text-align: center;
 }
-.Services .ServicesFooter .ServicesRight div {
+.Services .ContactUs .ServicesRight div {
   width: 100%;
   margin: 10px 0;
   position: relative;
 }
-.Services .ServicesFooter .ServicesRight div p {
+.Services .ContactUs .ServicesRight div p {
   text-align: center;
   margin: auto;
   font-size: 14px;
@@ -221,12 +235,12 @@
   width: -moz-fit-content;
   width: fit-content;
 }
-.Services .ServicesFooter .ServicesRight div hr {
+.Services .ContactUs .ServicesRight div hr {
   position: absolute;
   top: 50%;
   width: 100%;
 }
-.Services .ServicesFooter .ServicesRight span {
+.Services .ContactUs .ServicesRight span {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -235,11 +249,11 @@
   gap: 10px;
   margin: 15px 0;
 }
-.Services .ServicesFooter .ServicesRight span label {
+.Services .ContactUs .ServicesRight span label {
   width: 100%;
 }
-.Services .ServicesFooter .ServicesRight input,
-.Services .ServicesFooter .ServicesRight textarea {
+.Services .ContactUs .ServicesRight input,
+.Services .ContactUs .ServicesRight textarea {
   all: unset;
   color: #000;
   padding: 12px;
@@ -250,12 +264,12 @@
   box-sizing: border-box;
 }
 @media (min-width: 800px) {
-  .Services .ServicesFooter {
+  .Services .ContactUs {
     flex-direction: row;
   }
 }
 .Services .NewsAndEvents {
-  padding: 0 5%;
+  padding: 0 10%;
   background-color: #fff;
   color: #000;
 }
@@ -344,11 +358,11 @@
 .Services .NewsAndEvents .NewsAndEventsLatest .NewsAndEventsLatestContainer .NewsAndEventsLatestNews .NewsAndEventsLatestImage {
   flex: 1;
   position: relative;
-  width: min(300px, 100%);
-  padding-top: 200px;
-  box-shadow: 2px 5px 40px -12px #020518;
-  border-radius: 10px;
+  padding-top: min(50%, 186px);
+  width: 100%;
   overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 2px 5px 40px -12px #020518;
 }
 .Services .NewsAndEvents .NewsAndEventsLatest .NewsAndEventsLatestContainer .NewsAndEventsLatestNews .NewsAndEventsLatestContent {
   flex: 1;
@@ -385,6 +399,7 @@
   border: 1px solid #d0d5dd;
   padding: 8px 14px;
   display: flex;
+  gap: 7px;
   align-items: center;
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   border-radius: 8px;
@@ -407,5 +422,122 @@
     align-items: center;
     width: 100%;
     gap: 2rem;
+  }
+}
+.Services .NewsAndEventsDynamic {
+  padding: 1% 10%;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicBack {
+  background: linear-gradient(192.7deg, #152a47 14.55%, #032555 91.2%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 20px;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  font-size: 20px;
+  line-height: 30px;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicMain p {
+  font-size: 16px;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicMain .Image {
+  position: relative;
+  width: 100%;
+  padding-top: 70%;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicMain button:hover {
+  color: #fff;
+  border: none;
+  transform: scale(1.01);
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicMain .NewsAndEventsDynamicFeaturedContent {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicMain .NewsAndEventsDynamicFeaturedContent p {
+  font-size: 13px;
+  color: #656464;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicNews {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  gap: 1.3rem;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+  border-bottom: 1px solid #eaecf0;
+  padding-bottom: 30px;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicNews .Content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: all 300ms ease-in-out;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicNews .Content h1 {
+  color: #3a3a3a;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicNews .Content div {
+  display: flex;
+  gap: 20px;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicNews .Content div p {
+  font-size: 12px;
+  color: #656464;
+}
+.Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicNews .Content:hover {
+  box-shadow: 4.5px 4.5px 3.1px rgba(0, 0, 0, 0.024), 12.5px 12.5px 8.5px rgba(0, 0, 0, 0.035), 30.1px 30.1px 20.5px rgba(0, 0, 0, 0.046), 100px 100px 68px rgba(0, 0, 0, 0.07);
+}
+@media (min-width: 800px) {
+  .Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicMain {
+    flex: 6.5;
+  }
+  .Services .NewsAndEventsDynamic .NewsAndEventsDynamicContent .NewsAndEventsDynamicNews {
+    flex: 3.5;
+    align-self: baseline;
   }
 }/*# sourceMappingURL=services.module.css.map */

@@ -7,6 +7,7 @@ import Headers from "../components/General/Headers";
 import Paragraphs from "../components/General/Paragraphs";
 import Startups from "../components/HomePage/Startups";
 import styles from "../styles/services.module.css";
+import { motion, AnimatePresence } from "framer-motion";
 export default function Mobile() {
   const [data, setData] = useState({
     name: "",
@@ -22,9 +23,9 @@ export default function Mobile() {
           <Headers content="Contact Us" />
         </aside>
       </section>
-      <section className={styles.ServicesFooter}>
+      <section className={styles.ContactUs}>
         <aside className={styles.ServicesLeft}>
-          <h1>Convinced yet? Let's make something great together</h1>
+          <h1>Convinced yet? Lets make something great together</h1>
           {values.map((value, i) => (
             <div key={i}>
               {value.icon}
@@ -38,33 +39,38 @@ export default function Mobile() {
             <p>All fields are required</p>
             <hr />
           </div>
-          <form>
-            {inputValues.map((inputValue) => (
-              <span key={inputValue.id}>
-                <label htmlFor={inputValue.id}>{inputValue.label}</label>
-                <input
-                  id={inputValue.id}
-                  type="text"
-                  name={inputValue.id}
-                  placeholder={inputValue.placeholder}
-                  onChange={(e) =>
-                    setData((data) => ({
-                      ...data,
-                      [e.target.name]: e.target.value,
-                    }))
-                  }
-                />
-              </span>
-            ))}
-            <span>
+          <motion.form variants={formcont} initial="init" whileInView="final">
+            <AnimatePresence>
+              {inputValues.map((inputValue) => (
+                <motion.span variants={forminput} key={inputValue.id}>
+                  <label htmlFor={inputValue.id}>{inputValue.label}</label>
+                  <input
+                    id={inputValue.id}
+                    type="text"
+                    name={inputValue.id}
+                    placeholder={inputValue.placeholder}
+                    onChange={(e) =>
+                      setData((data) => ({
+                        ...data,
+                        [e.target.name]: e.target.value,
+                      }))
+                    }
+                  />
+                </motion.span>
+              ))}
+            </AnimatePresence>
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{once:true}}>
               <label htmlFor="message">Enter Message</label>
               <textarea
                 id="message"
-                placeholder="enter your message"
-              ></textarea>
-            </span>
+                placeholder="enter your message"></textarea>
+            </motion.span>
             <Button content="Send Message" style={{ width: "100%" }} />
-          </form>
+          </motion.form>
         </aside>
       </section>
       <Startups />
@@ -107,3 +113,25 @@ let inputValues = [
   { id: "email", placeholder: "sample@user.com", label: "Email" },
   { id: "subject", placeholder: "How to join the team", label: "Subject" },
 ];
+const forminput = {
+  init: {
+    opacity: 0,
+  },
+  final: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 1 },
+  },
+};
+
+const formcont = {
+  init: {
+    opacity: 0,
+  },
+  final: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.4,
+    },
+  },
+};
